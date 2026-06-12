@@ -1,4 +1,4 @@
-# ui-auto
+# ui-auto test
 
 Declarative UI-automation toolkit for Windows desktop apps. Drives mouse, keyboard, screenshots, and UIA-based validation from simple YAML scenarios.
 
