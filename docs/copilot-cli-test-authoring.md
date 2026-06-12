@@ -20,7 +20,7 @@ For Copilot-only tweaks, add `.github/copilot-instructions.md` (Copilot ignores 
 
 | Situation | Recommended workflow |
 |---|---|
-| Brand-new scenario, unknown UIA tree | **REPL-first** — use `scripts/author_test.py` to capture real selectors live, then ask the agent to refactor / extend. |
+| Brand-new scenario, unknown UIA tree | **REPL-first** — use `scripts/authoring/author_test.py` to capture real selectors live, then ask the agent to refactor / extend. |
 | Variant of an existing scenario | **Agent-first** — point the agent at the nearest existing YAML in `test_cases/` and have it produce a new file. |
 | Bulk parameter sweep | **Agent-first** — describe the inputs table; the agent fills `inputs` + a `foreach` block. |
 
@@ -45,7 +45,7 @@ The REPL guarantees selectors actually resolve; the agent is faster but you must
 > Create `test_cases/notepad_save.yaml` that opens Notepad from the Start menu, types `hello from copilot`, saves the file as `%TEMP%\copilot_test.txt` via Ctrl+S, asserts the file exists, and closes Notepad with a mouse click on the Close button. Reuse the `timing` block style from `test_cases/powershell_echo_loop.yaml`.
 
 **Parametrised scenario:**
-> Create `test_cases/calc_add.yaml` that opens the Windows Calculator and, for each pair in `inputs.cases` (e.g. `[1,2]`, `[7,8]`, `[123,456]`), clicks the digits + plus + equals, screenshots the result, and asserts the display contains the expected sum. Use a `foreach` step.
+> Create `test_cases/notepad_echo.yaml` that opens Notepad from the Start menu and, for each string in `inputs.lines` (e.g. `["alpha", "beta", "gamma"]`), types the line followed by Enter, screenshots the window, and asserts the document text contains that line. Use a `foreach` step.
 
 **Targeted fix:**
 > Step `validate_echo_3` fails with `expected_contains_expr not found within 3000 ms`. The text appears but with a leading `PS>` prompt. Update only that step's `expected_contains_expr` — don't touch other steps.

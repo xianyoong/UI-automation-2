@@ -12,6 +12,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("title_regex")
     p.add_argument("--class", dest="cls", default=None)
+    p.add_argument("--pid", type=int, default=None,
+                   help="only match windows owned by this process id")
     p.add_argument("--backend", choices=["uia", "win32", "any"], default="any",
                    help="UIA misses some legacy Win32 dialogs (e.g. classic 'Save As'); 'any' searches both and de-dups by handle.")
     g = p.add_mutually_exclusive_group()
@@ -31,6 +33,8 @@ def main():
                     continue
                 title = w.window_text() or ""
                 if not rx.search(title):
+                    continue
+                if a.pid is not None and w.process_id() != a.pid:
                     continue
                 if a.cls and w.class_name() != a.cls:
                     continue

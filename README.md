@@ -1,7 +1,6 @@
 # ui-auto
 
-Declarative UI-automation toolkit for Windows desktop apps. Drives mouse,
-keyboard, screenshots, and UIA-based validation from simple YAML scenarios.
+Declarative UI-automation toolkit for Windows desktop apps. Drives mouse, keyboard, screenshots, and UIA-based validation from simple YAML scenarios.
 
 ## Install
 
@@ -11,8 +10,7 @@ One PowerShell command on a fresh Windows 10/11 machine:
 irm https://raw.githubusercontent.com/william051200/UI-automation/main/install.ps1 | iex
 ```
 
-This installs `uv` + Python + `git` as needed, clones the repo to
-`%USERPROFILE%\UI-automation`, and installs all pinned dependencies.
+This installs `uv` + Python + `git` as needed, clones the repo to `%USERPROFILE%\UI-automation`, and installs all pinned dependencies.
 
 ## Run the example
 
@@ -23,14 +21,11 @@ cd $HOME\UI-automation
 
 (equivalent to `uv run python run_test.py test_cases\powershell_echo_loop.yaml`.)
 
-The example opens PowerShell via Start menu, echoes 4 fixed strings,
-validates each via UIA, saves a screenshot per iteration, then closes the
-window with a mouse-click on the UIA-located Close button.
+The example opens PowerShell via Start menu, echoes 4 fixed strings, validates each via UIA, saves a screenshot per iteration, then closes the window with a mouse-click on the UIA-located Close button.
 
 Exit codes: `0` pass, `1` assertion failed, `2` runner error.
 
-Add `-q` (or `--quiet`) to suppress per-step echo and successful subcommand
-stdout; failures, stderr, and the final RESULT line are always shown.
+Add `-q` (or `--quiet`) to suppress per-step echo and successful subcommand stdout; failures, stderr, and the final RESULT line are always shown.
 
 ## Open the dashboard
 
@@ -47,17 +42,13 @@ running a server.
 
 ## Author a new scenario
 
-Use the interactive REPL — each step is executed live against the real UI
-and captured into the YAML as you go:
+Use the interactive REPL — each step is executed live against the real UI and captured into the YAML as you go:
 
 ```powershell
-uv run python scripts/author_test.py test_cases\my_scenario.yaml
+uv run python scripts/authoring/author_test.py test_cases\my_scenario.yaml
 ```
 
-The REPL halts on ambiguous selectors and on a UI that stops responding
-(3 consecutive identical fingerprints). See
-[`docs/authoring-scenarios.md`](docs/authoring-scenarios.md) for the full
-workflow and the recommended `auto_id + name` selector pattern.
+The REPL halts on ambiguous selectors and on a UI that stops responding (3 consecutive identical fingerprints). See [`docs/authoring-scenarios.md`](docs/authoring-scenarios.md) for the full workflow and the recommended `auto_id + name` selector pattern.
 
 ## Run the tests
 
@@ -65,8 +56,7 @@ workflow and the recommended `auto_id + name` selector pattern.
 uv run python -m unittest discover -s tests -v
 ```
 
-22 stdlib `unittest` cases covering the authoring tool — no extra dev
-dependencies required.
+22 stdlib `unittest` cases covering the authoring tool — no extra dev dependencies required.
 
 ## Using with Copilot CLI
 
@@ -74,18 +64,12 @@ If you have [GitHub Copilot CLI](https://github.com/github/gh-copilot) (or any o
 
 ### Token-efficient Copilot usage
 
-Driving the runner through Copilot CLI is convenient but costs LLM tokens
-per turn. To keep costs low without changing test behavior:
+Driving the runner through Copilot CLI is convenient but costs LLM tokens per turn. To keep costs low without changing test behavior:
 
-- **Skip the LLM entirely** for routine runs — invoke `.\run.ps1 <spec>`
-  directly. This is the biggest saving (~0 LLM tokens).
-- **Pass `-q`** when Copilot does run the scenario; this strips per-step
-  echo from the output the model sees.
-- **Scope the prompt** so Copilot doesn't speculatively read source files.
-  Example: *"Run `.\run.ps1 ... -q`. Report only the exit code and any FAIL
-  lines. Do not read `run_test.py` or the YAML."*
-- **Batch follow-ups** into one prompt — each new turn replays the whole
-  conversation, so 3 small turns cost ~3x one combined turn.
+- **Skip the LLM entirely** for routine runs — invoke `.\run.ps1 <spec>` directly. This is the biggest saving (~0 LLM tokens).
+- **Pass `-q`** when Copilot does run the scenario; this strips per-step echo from the output the model sees.
+- **Scope the prompt** so Copilot doesn't speculatively read source files. Example: *"Run `.\run.ps1 ... -q`. Report only the exit code and any FAIL lines. Do not read `run_test.py` or the YAML."*
+- **Batch follow-ups** into one prompt — each new turn replays the whole conversation, so 3 small turns cost ~3x one combined turn.
 
 ## Documentation
 

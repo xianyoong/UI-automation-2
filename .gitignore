@@ -5,6 +5,11 @@ __pycache__/
 
 # Run artifacts
 screenshots/
+# Chrome remote-debugging profile used by browser_launch.py
+.browser-profile/
+.browser-profile-edge/
+.browser-profile-clone/
+.browser-profile-edge-clone/
 results/
 dashboard.html
 
@@ -13,4 +18,4 @@ Thumbs.db
 .DS_Store
 .vscode/
 .idea/
-/.vs/UI-automation/FileContentIndex
+/.vs

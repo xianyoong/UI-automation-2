@@ -20,10 +20,23 @@ A test case is a YAML file with these top-level keys:
 | `assert_console_contains` | `read_console.py` with polling | Asserts `expected_contains_expr` appears within `poll_total_ms`. |
 | `foreach` | n/a | Iterates `items` (e.g. `inputs.echo_texts`), exposing `var` and `index_var` to nested `body` steps. |
 
+### Web-page steps (raw Chrome DevTools Protocol)
+
+These drive a Chrome launched normally with only `--remote-debugging-port` (no automation switches, so `navigator.webdriver` stays `false`). State lives in the long-running Chrome; each step reconnects over CDP. All accept `--port` (default `9222`) and an optional `--url-contains` to pick a specific page target. See [reproducibility](reproducibility.md) for the fixed `--user-data-dir`.
+
+| `type` | Calls | Notes |
+|---|---|---|
+| `browser_launch` | `browser_launch.py` | Launches Chrome or Edge (`--browser chrome|edge`) with `--remote-debugging-port` + fixed `--user-data-dir`, waits for the CDP endpoint. `--fresh` wipes the profile dir first. Prints `port`/`pid`; capture the port for later steps. |
+| `browser_goto` | `browser_goto.py` | `Page.navigate` to a URL, waits for `document.readyState === 'complete'`. Prints final `url`/`title`. |
+| `dom_get_html` | `dom_get_html.py` | Writes `outerHTML` (or `--text` `innerText`) of the document or `--selector` to `--out`; prints `bytes`/`path`. Exit 1 if the selector matches nothing. |
+| `dom_interact` | `dom_interact.py` | `action` ∈ click/type/set/press/select on a CSS `--selector` (+`--value`). Uses trusted `Input.dispatch*` events. Exit 1 if not found/interactable. |
+| `dom_query` | `dom_query.py` | Validate where to interact: reports `count`/`visible`/`text`/box for a `--selector`. Assertion flags `--expect-min`/`--visible`/`--contains` exit 1 on failure. `--attr NAME` prints the first match's attribute value as the first output line (capture via `$.cols[0]`); `--attr innerText` captures text. |
+| `dom_eval` | `dom_eval.py` | Evaluates a JS `--expr` on the page and prints the result as the first output line (capture via `$.cols[0]`); objects become compact JSON. Null/undefined exits 1. Use for values not addressable as elements/attributes (e.g. inside `window.__NEXT_DATA__`). |
+| `write_text` | `write_text.py` | Writes `--text` (default empty; `\n` → newline) to `--out`, makes parent dirs, prints the **absolute** path as the first line (capture via `$.cols[0]`). `--append` to append. Useful to pre-create a path-bound file for a GUI editor to save. |
+
 ## Placeholders
 
-`{path.to.value}` resolves against `inputs`, `artifacts`, `vars` (captured
-from earlier steps), and loop locals. Simple integer arithmetic works:
+`{path.to.value}` resolves against `inputs`, `artifacts`, `vars` (captured from earlier steps), and loop locals. Simple integer arithmetic works:
 
 ```yaml
 args_expr: ["{vars.win_left + 100}", "{vars.win_top + 60}"]
@@ -39,16 +52,14 @@ capture:
 
 ## Pass / fail screenshot variants
 
-`screenshot` accepts `args_expr_on_pass` and `args_expr_on_fail`, so failed
-iterations are saved under a different filename:
+`screenshot` accepts `args_expr_on_pass` and `args_expr_on_fail`, so failed iterations are saved under a different filename:
 
 ```yaml
 - id: snapshot
   type: screenshot
-  script: scripts/screenshot.py
+  script: scripts/files/screenshot.py
   args_expr_on_pass: ["{artifacts.screenshot_dir}/iter_{n}.png"]
   args_expr_on_fail: ["{artifacts.screenshot_dir}/iter_{n}_FAIL.png"]
 ```
 
-See [`test_cases/powershell_echo_loop.yaml`](../test_cases/powershell_echo_loop.yaml)
-for a complete worked example.
+See [`test_cases/powershell_echo_loop.yaml`](../test_cases/powershell_echo_loop.yaml) for a complete worked example.

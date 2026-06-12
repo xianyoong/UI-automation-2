@@ -8,6 +8,7 @@ import argparse, os, subprocess, sys, time
 
 PY = sys.executable
 HERE = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(os.path.dirname(HERE))
 
 
 def main():
@@ -28,8 +29,8 @@ def main():
         print("ERROR: no forwarded args; usage: wait_for.py --mode <m> -- <helper args>",
               file=sys.stderr); sys.exit(2)
 
-    script = "find_window.py" if a.mode == "window" else "find_control.py"
-    cmd = [PY, os.path.join(HERE, script)] + args
+    script = ("window", "find_window.py") if a.mode == "window" else ("uia", "find_control.py")
+    cmd = [PY, os.path.join(_REPO_ROOT, "scripts", *script)] + args
 
     deadline = time.time() + a.timeout_ms / 1000.0
     interval = max(a.poll_ms, 0) / 1000.0

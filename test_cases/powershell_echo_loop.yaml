@@ -32,28 +32,28 @@ steps:
   - id: launch_open_start
     type: key
     description: "Open Start menu via Win key."
-    script: scripts/key.py
+    script: scripts/input/key.py
     args: ["win"]
     wait_after: after_win_key_ms
 
   - id: launch_search
     type: type_text
     description: "Type 'powershell' into the Start menu."
-    script: scripts/type_text.py
+    script: scripts/input/type_text.py
     args: ["powershell"]
     wait_after: after_search_text_ms
 
   - id: launch_confirm
     type: key
     description: "Press Enter to launch the top result."
-    script: scripts/key.py
+    script: scripts/input/key.py
     args: ["enter"]
     wait_after: after_launch_enter_ms
 
   - id: locate_window
     type: find_window
     description: "Locate the PowerShell window; stash hwnd and rect in vars."
-    script: scripts/find_window.py
+    script: scripts/window/find_window.py
     args: ["^Windows PowerShell$"]
     capture:
       vars.hwnd: "$.cols[1]"
@@ -65,7 +65,7 @@ steps:
   - id: focus_window
     type: click
     description: "Click inside the PowerShell window to take focus."
-    script: scripts/click.py
+    script: scripts/input/click.py
     args_expr: ["{vars.win_left + 100}", "{vars.win_top + 60}"]
     wait_after: after_focus_click_ms
 
@@ -80,21 +80,21 @@ steps:
       - id: type_echo_cmd
         type: type_text
         description: "Type the echo command."
-        script: scripts/type_text.py
+        script: scripts/input/type_text.py
         args_expr: ['echo "{text}"']
         wait_after: after_type_ms
 
       - id: submit_cmd
         type: key
         description: "Submit the command."
-        script: scripts/key.py
+        script: scripts/input/key.py
         args: ["enter"]
         wait_after: after_enter_ms
 
       - id: validate_console
         type: assert_console_contains
         description: "Assert the echoed text appears in the console (UIA, polled)."
-        script: scripts/read_console.py
+        script: scripts/uia/read_console.py
         args_expr: ["{vars.hwnd}"]
         expected_contains_expr: "{text}"
         poll_total_ms: validate_poll_total_ms
@@ -103,14 +103,14 @@ steps:
       - id: snapshot
         type: screenshot
         description: "Save iter_{n}.png (or iter_{n}_FAIL.png on prior failure)."
-        script: scripts/screenshot.py
+        script: scripts/files/screenshot.py
         args_expr_on_pass: ["{artifacts.screenshot_dir}/iter_{n}.png"]
         args_expr_on_fail: ["{artifacts.screenshot_dir}/iter_{n}_FAIL.png"]
 
   - id: locate_close_button
     type: find_control
     description: "Locate the Close button inside the PowerShell window via UIA."
-    script: scripts/find_control.py
+    script: scripts/uia/find_control.py
     args_expr: ["{vars.hwnd}", "--name", "Close", "--control-type", "Button"]
     capture:
       vars.close_x: "$.rows[1].cols[7]"
@@ -119,14 +119,14 @@ steps:
   - id: click_close
     type: click
     description: "Mouse-click the Close button center."
-    script: scripts/click.py
+    script: scripts/input/click.py
     args_expr: ["{vars.close_x}", "{vars.close_y}"]
     wait_after: after_close_click_ms
 
   - id: assert_window_closed
     type: find_window
     description: "Re-search for the PowerShell window; must NOT be found."
-    script: scripts/find_window.py
+    script: scripts/window/find_window.py
     args: ["^Windows PowerShell$"]
     expect_exit: 1
 
