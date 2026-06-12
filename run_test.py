@@ -8,7 +8,7 @@ Exit codes:
     1  one or more assertions failed
     2  runner error (bad spec, script missing, etc.)
 """
-import argparse, datetime, os, re, subprocess, sys, time
+import argparse, datetime, json, os, re, subprocess, sys, time
 import yaml
 
 try:
@@ -54,6 +54,9 @@ class Ctx:
         }
         self.shot_dir = os.path.join(ROOT, self.subs["artifacts"].get("screenshot_dir", "screenshots/run"))
         os.makedirs(self.shot_dir, exist_ok=True)
+        self.timestamp = ts
+        self.step_results = []
+        self.started_at = datetime.datetime.utcnow()
 
 
 _expr_re = re.compile(r"\{([^{}]+)\}")
@@ -230,15 +233,64 @@ def main():
     print(f"=== {spec.get('name')} ===")
     print(f"screenshot_dir: {ctx.shot_dir}")
     failed = False
+    failed_id = None
+    failed_msg = None
     for step in spec["steps"]:
+        sid = step.get("id", "?")
+        stype = step.get("type", "")
+        sdesc = (step.get("description") or "").strip().splitlines()[0] if step.get("description") else ""
+        t0 = time.time()
         try:
             exec_step(step, ctx, {})
+            ctx.step_results.append({
+                "id": sid, "type": stype, "description": sdesc,
+                "status": "pass", "duration_s": round(time.time() - t0, 3),
+                "error": None,
+            })
         except AssertionError as e:
-            print(f"\n*** STEP FAILED: {step.get('id')}: {e}")
+            ctx.step_results.append({
+                "id": sid, "type": stype, "description": sdesc,
+                "status": "fail", "duration_s": round(time.time() - t0, 3),
+                "error": str(e),
+            })
+            print(f"\n*** STEP FAILED: {sid}: {e}")
             failed = True
+            failed_id = sid
+            failed_msg = str(e)
             break
+    write_result(a.spec, spec, ctx, "FAIL" if failed else "PASS", failed_id, failed_msg)
     print("\n=== RESULT:", "FAIL" if failed else "PASS", "===")
     sys.exit(1 if failed else 0)
+
+
+def write_result(spec_path, spec, ctx, result, failed_id, failed_msg):
+    finished_at = datetime.datetime.utcnow()
+    rec = {
+        "spec": os.path.relpath(os.path.abspath(spec_path), ROOT).replace("\\", "/"),
+        "name": spec.get("name", os.path.basename(spec_path)),
+        "description": spec.get("description", ""),
+        "started_at": ctx.started_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "finished_at": finished_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "duration_s": round((finished_at - ctx.started_at).total_seconds(), 3),
+        "result": result,
+        "failed_step_id": failed_id,
+        "failed_step_error": failed_msg,
+        "screenshot_dir": os.path.relpath(ctx.shot_dir, ROOT).replace("\\", "/"),
+        "steps": ctx.step_results,
+        "total_steps": len(spec.get("steps", [])),
+    }
+    out_dir = os.path.join(ROOT, "results")
+    os.makedirs(out_dir, exist_ok=True)
+    spec_slug = re.sub(r"[^a-zA-Z0-9_-]+", "_",
+                       os.path.splitext(os.path.basename(spec_path))[0])
+    out_path = os.path.join(out_dir, f"{ctx.timestamp}__{spec_slug}.json")
+    try:
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(rec, f, indent=2)
+        if not QUIET:
+            print(f"result: {os.path.relpath(out_path, ROOT)}")
+    except Exception as e:
+        print(f"WARN: could not write result file: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,250 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\uia_tree.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\uia_tree.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\screenshot.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\screenshot.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\read_console.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\read_console.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\find_control.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\find_control.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\wait_for.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\wait_for.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\scroll.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\scroll.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\key.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\key.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\read_text.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\read_text.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\click.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\click.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\activate_window.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\activate_window.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\file-structure.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\file-structure.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\reproducibility.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\reproducibility.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\copilot-cli-test-authoring.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\copilot-cli-test-authoring.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\authoring-scenarios.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\authoring-scenarios.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "screenshot.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\screenshot.py",
+              "RelativeDocumentMoniker": "scripts\\screenshot.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\screenshot.py",
+              "RelativeToolTip": "scripts\\screenshot.py",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:52:58.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "find_control.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\find_control.py",
+              "RelativeDocumentMoniker": "scripts\\find_control.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\find_control.py",
+              "RelativeToolTip": "scripts\\find_control.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:50:49.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "read_console.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\read_console.py",
+              "RelativeDocumentMoniker": "scripts\\read_console.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\read_console.py",
+              "RelativeToolTip": "scripts\\read_console.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:50:45.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "uia_tree.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\uia_tree.py",
+              "RelativeDocumentMoniker": "scripts\\uia_tree.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\uia_tree.py",
+              "RelativeToolTip": "scripts\\uia_tree.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:49:50.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "wait_for.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\wait_for.py",
+              "RelativeDocumentMoniker": "scripts\\wait_for.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\wait_for.py",
+              "RelativeToolTip": "scripts\\wait_for.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:49:48.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "scroll.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\scroll.py",
+              "RelativeDocumentMoniker": "scripts\\scroll.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\scroll.py",
+              "RelativeToolTip": "scripts\\scroll.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:49:41.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "key.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\key.py",
+              "RelativeDocumentMoniker": "scripts\\key.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\key.py",
+              "RelativeToolTip": "scripts\\key.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:49:39.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "read_text.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\read_text.py",
+              "RelativeDocumentMoniker": "scripts\\read_text.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\read_text.py",
+              "RelativeToolTip": "scripts\\read_text.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:49:37.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "click.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\click.py",
+              "RelativeDocumentMoniker": "scripts\\click.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\click.py",
+              "RelativeToolTip": "scripts\\click.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:49:11.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "activate_window.py",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\activate_window.py",
+              "RelativeDocumentMoniker": "scripts\\activate_window.py",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\scripts\\activate_window.py",
+              "RelativeToolTip": "scripts\\activate_window.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-04T07:48:46.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "file-structure.md",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\file-structure.md",
+              "RelativeDocumentMoniker": "docs\\file-structure.md",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\file-structure.md",
+              "RelativeToolTip": "docs\\file-structure.md",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-04T07:48:36.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "reproducibility.md",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\reproducibility.md",
+              "RelativeDocumentMoniker": "docs\\reproducibility.md",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\reproducibility.md",
+              "RelativeToolTip": "docs\\reproducibility.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-04T07:48:35.416Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "copilot-cli-test-authoring.md",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\copilot-cli-test-authoring.md",
+              "RelativeDocumentMoniker": "docs\\copilot-cli-test-authoring.md",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\copilot-cli-test-authoring.md",
+              "RelativeToolTip": "docs\\copilot-cli-test-authoring.md",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-04T07:48:27.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "authoring-scenarios.md",
+              "DocumentMoniker": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\authoring-scenarios.md",
+              "RelativeDocumentMoniker": "docs\\authoring-scenarios.md",
+              "ToolTip": "C:\\Users\\v-txianyoong\\source\\repos\\UI-automation\\docs\\authoring-scenarios.md",
+              "RelativeToolTip": "docs\\authoring-scenarios.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-04T07:48:21.742Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

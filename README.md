@@ -32,6 +32,19 @@ Exit codes: `0` pass, `1` assertion failed, `2` runner error.
 Add `-q` (or `--quiet`) to suppress per-step echo and successful subcommand
 stdout; failures, stderr, and the final RESULT line are always shown.
 
+## Open the dashboard
+
+```powershell
+.\dashboard.ps1
+```
+
+Then open <http://localhost:8765/> in your browser (the script opens it
+automatically). Keep the window open; Ctrl+C stops the server.
+
+Use `.\dashboard.ps1 -Port 9000` for a different port, or
+`.\dashboard.ps1 -Static` to just regenerate `dashboard.html` without
+running a server.
+
 ## Author a new scenario
 
 Use the interactive REPL — each step is executed live against the real UI
@@ -83,6 +96,28 @@ per turn. To keep costs low without changing test behavior:
 - [`AGENTS.md`](AGENTS.md) — auto-loaded instructions for AI coding agents working in this repo.
 - [Reproducibility](docs/reproducibility.md) — how runs stay bit-identical.
 - [Troubleshooting](docs/troubleshooting.md) — DPI, multi-monitor, UI language, legacy pip path.
+
+## Dashboard
+
+Launch a live dashboard with working **Run / Hold / Resume / Delete** buttons:
+
+```powershell
+.\dashboard.ps1                        # serves http://localhost:8765 + opens browser
+.\dashboard.ps1 -Port 9000             # custom port
+.\dashboard.ps1 -Static                # static file mode (buttons copy commands instead)
+```
+
+In live mode, click **▶ Run** on any row to spawn a real PowerShell console window that executes that test case (`.\run.ps1 <spec>`); the dashboard auto-refreshes a few seconds later so you see the new PASS/FAIL status. Click **▶ Run All** to run every spec sequentially in one window. Press **Ctrl+C** in the server window to stop.
+
+The dashboard shows TOTAL / PASSED / FAILED / ON HOLD / NOT RUN counts, a 7-day runs-per-day chart, and a per-test-case row with category, priority, last run, and quick actions (Details / Run / Edit / Hold / Delete). Click any row to expand the run history and per-step breakdown of the latest run.
+
+Run records are written to `results/<timestamp>__<spec>.json` automatically by `run_test.py`. Per-spec metadata (id, category, priority, note, hold-state) is stored in `dashboard_meta.json` and can be edited directly or via:
+
+```powershell
+uv run python scripts/dashboard.py --hold   test_cases\my_scenario.yaml
+uv run python scripts/dashboard.py --resume test_cases\my_scenario.yaml
+uv run python scripts/dashboard.py --set    test_cases\my_scenario.yaml priority=P1 category=Smoke
+```
 
 ## License
 

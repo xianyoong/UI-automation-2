@@ -1,0 +1,246 @@
+name: vs_create_console_app
+description: >
+  Launch Visual Studio 2022, create a new C# Console App via the new-project
+  wizard (selecting the bottom option in the Framework dropdown — LTS),
+  then in the IDE: open project Properties via right-click, open the .csproj
+  by double-clicking the project node, build with Ctrl+Shift+B, and run with
+  the Start button.
+
+inputs:
+  vs_path: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\devenv.exe"
+  project_name: "Test 1"
+  template_query: "Console"
+
+artifacts:
+  screenshot_dir: "screenshots/{timestamp}"
+
+timing:
+  after_launch_vs_ms: 45000
+  after_click_ms: 800
+  after_dialog_open_ms: 2500
+  after_dropdown_open_ms: 600
+  after_create_ms: 15000
+  after_keypress_ms: 400
+  after_build_ms: 8000
+  after_run_ms: 5000
+  short_pause_ms: 600
+
+steps:
+
+  - id: launch_vs
+    type: launch
+    description: "Launch Visual Studio 2022."
+    script: scripts/launch.py
+    args_expr: ["{inputs.vs_path}"]
+    wait_after: after_launch_vs_ms
+
+  - id: locate_start_window
+    type: find_window
+    description: "Find the VS start window; capture hwnd. Use UIA backend to skip the Win32 outer frame."
+    script: scripts/find_window.py
+    args: ["Microsoft Visual Studio", "--backend", "uia"]
+    capture:
+      vars.start_hwnd: "$.cols[1]"
+
+  - id: find_create_button
+    type: find_control
+    description: "Locate the 'Create a new project' button on the start window."
+    script: scripts/find_control.py
+    args_expr: ["{vars.start_hwnd}", "--name", "Create a new project", "--control-type", "Button"]
+    capture:
+      vars.create_btn_x: "$.rows[1].cols[7]"
+      vars.create_btn_y: "$.rows[1].cols[8]"
+
+  - id: click_create_new_project
+    type: click
+    description: "Click 'Create a new project'."
+    script: scripts/click.py
+    args_expr: ["{vars.create_btn_x}", "{vars.create_btn_y}"]
+    wait_after: after_dialog_open_ms
+
+  - id: type_template_query
+    type: type_text
+    description: "Type 'Console' — VS auto-selects the Console App template and advances to Configure mid-typing."
+    script: scripts/type_text.py
+    args_expr: ["{inputs.template_query}"]
+    wait_after: after_dialog_open_ms
+
+  - id: find_project_name_box
+    type: find_control
+    description: "Locate the Project name text box on the Configure screen."
+    script: scripts/find_control.py
+    args_expr: ["{vars.start_hwnd}", "--auto-id", "projectNameText", "--control-type", "Edit"]
+    capture:
+      vars.name_x: "$.rows[1].cols[7]"
+      vars.name_y: "$.rows[1].cols[8]"
+
+  - id: focus_project_name
+    type: click
+    description: "Click into the Project name field to focus it."
+    script: scripts/click.py
+    args_expr: ["{vars.name_x}", "{vars.name_y}"]
+    wait_after: after_keypress_ms
+
+  - id: clear_project_name
+    type: key
+    description: "Select-all so the next typing replaces whatever leaked in from the template-picker race."
+    script: scripts/key.py
+    args: ["ctrl+a"]
+    wait_after: after_keypress_ms
+
+  - id: type_project_name
+    type: type_text
+    description: "Type the desired project name (replaces selection)."
+    script: scripts/type_text.py
+    args_expr: ["{inputs.project_name}"]
+    wait_after: after_keypress_ms
+
+  - id: find_next_configure
+    type: find_control
+    description: "Locate the 'Next' button on the Configure screen."
+    script: scripts/find_control.py
+    args_expr: ["{vars.start_hwnd}", "--name", "Next", "--control-type", "Button"]
+    capture:
+      vars.next2_x: "$.rows[1].cols[7]"
+      vars.next2_y: "$.rows[1].cols[8]"
+
+  - id: press_next_configure
+    type: click
+    description: "Click 'Next' to advance to Additional Information."
+    script: scripts/click.py
+    args_expr: ["{vars.next2_x}", "{vars.next2_y}"]
+    wait_after: after_dialog_open_ms
+
+  - id: find_framework_dropdown
+    type: find_control
+    description: "Locate the Framework dropdown on Additional Information screen."
+    script: scripts/find_control.py
+    args_expr: ["{vars.start_hwnd}", "--name", "_Framework", "--control-type", "ComboBox"]
+    capture:
+      vars.fw_x: "$.rows[1].cols[7]"
+      vars.fw_y: "$.rows[1].cols[8]"
+
+  - id: open_framework_dropdown
+    type: click
+    description: "Click the Framework dropdown to expand it."
+    script: scripts/click.py
+    args_expr: ["{vars.fw_x}", "{vars.fw_y}"]
+    wait_after: after_dropdown_open_ms
+
+  - id: select_bottom_framework
+    type: key
+    description: "Press End then Enter to pick the last (bottom) item."
+    script: scripts/key.py
+    args: ["end"]
+    wait_after: after_keypress_ms
+
+  - id: confirm_framework
+    type: key
+    description: "Press Enter to commit the selected framework."
+    script: scripts/key.py
+    args: ["enter"]
+    wait_after: after_keypress_ms
+
+  - id: find_create_btn
+    type: find_control
+    description: "Locate the 'Create' button on Additional Information screen."
+    script: scripts/find_control.py
+    args_expr: ["{vars.start_hwnd}", "--name", "Create", "--control-type", "Button"]
+    capture:
+      vars.create_x: "$.rows[1].cols[7]"
+      vars.create_y: "$.rows[1].cols[8]"
+
+  - id: click_create
+    type: click
+    description: "Click 'Create' to scaffold the project."
+    script: scripts/click.py
+    args_expr: ["{vars.create_x}", "{vars.create_y}"]
+    wait_after: after_create_ms
+
+  - id: locate_ide
+    type: find_window
+    description: "Locate the main VS IDE window once project is loaded (Program.cs is open by default in new Console Apps)."
+    script: scripts/find_window.py
+    args: ["Program\\.cs - Microsoft Visual Studio", "--backend", "uia"]
+    capture:
+      vars.ide_hwnd: "$.cols[1]"
+
+  - id: find_project_node
+    type: find_control
+    description: "Locate the project node in Solution Explorer (2nd TreeViewItem after the Solution root). Project name varies due to typing race."
+    script: scripts/find_control.py
+    args_expr: ["{vars.ide_hwnd}", "--control-type", "TreeItem", "--class", "TreeViewItem", "--nth", "2"]
+    capture:
+      vars.proj_x: "$.rows[1].cols[7]"
+      vars.proj_y: "$.rows[1].cols[8]"
+
+  - id: right_click_project
+    type: click
+    description: "Right-click the project node."
+    script: scripts/click.py
+    args_expr: ["{vars.proj_x}", "{vars.proj_y}", "--right"]
+    wait_after: after_click_ms
+
+  - id: click_properties
+    type: type_text
+    description: "Type 'r' to select 'Properties' (mnemonic), then Enter."
+    script: scripts/type_text.py
+    args: ["r"]
+    wait_after: after_keypress_ms
+
+  - id: press_enter_properties
+    type: key
+    description: "Confirm Properties menu item."
+    script: scripts/key.py
+    args: ["enter"]
+    wait_after: short_pause_ms
+
+  - id: pause_after_properties
+    type: key
+    description: "Brief pause after opening Properties (Esc to close pages)."
+    script: scripts/key.py
+    args: ["escape"]
+    wait_after: short_pause_ms
+
+  - id: double_click_project
+    type: click
+    description: "Double-click the project node to open the .csproj."
+    script: scripts/click.py
+    args_expr: ["{vars.proj_x}", "{vars.proj_y}", "--double"]
+    wait_after: short_pause_ms
+
+  - id: build_solution
+    type: key
+    description: "Build the solution with Ctrl+Shift+B."
+    script: scripts/key.py
+    args: ["ctrl+shift+b"]
+    wait_after: after_build_ms
+
+  - id: snapshot_after_build
+    type: screenshot
+    description: "Capture IDE state after build."
+    script: scripts/screenshot.py
+    args_expr: ["{artifacts.screenshot_dir}/after_build.png"]
+
+  - id: run_project
+    type: key
+    description: "Run the project (F5 = Start with Debugging, equivalent to clicking ▶)."
+    script: scripts/key.py
+    args: ["f5"]
+    wait_after: after_run_ms
+
+  - id: snapshot_after_run
+    type: screenshot
+    description: "Capture state after Run."
+    script: scripts/screenshot.py
+    args_expr: ["{artifacts.screenshot_dir}/after_run.png"]
+
+expected_results:
+  - "Visual Studio start window opens within after_launch_vs_ms."
+  - "Console App template is selected and Configure screen appears."
+  - "Bottom framework option is selected in the Framework dropdown."
+  - "Project ConsoleApp1 is created and opens in the IDE."
+  - "Right-click → Properties opens the project Properties pages."
+  - "Double-click on project node opens the .csproj editor tab."
+  - "Build (Ctrl+Shift+B) completes without errors."
+  - "Run (F5) launches the program; screenshots saved under screenshots/{timestamp}/."
